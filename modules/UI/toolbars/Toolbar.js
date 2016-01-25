@@ -257,8 +257,8 @@ function inviteParticipants() {
         sharedKeyText = sharedKeyText.replace(/\n/g, "%0D%0A");
     }
 
-    var supportedBrowsers = "Chromium, Google Chrome " +
-        APP.translation.translateString("email.and") + " Opera";
+    var supportedBrowsers = "Chromium " +
+        APP.translation.translateString("email.and") + " Google Chrome";
     var conferenceName = roomUrl.substring(roomUrl.lastIndexOf('/') + 1);
     var subject = APP.translation.translateString("email.subject",
         {appName:interfaceConfig.APP_NAME, conferenceName: conferenceName});
