@@ -49,6 +49,9 @@ var config = {
     // Disables ICE/TCP by filtering out local and remote TCP candidates in signalling.
     webrtcIceTcpDisable: false,
 
+    //bandwidthLimit: 1000,
+    //forceVP9: true,
+
     openSctp: true, // Toggle to enable/disable SCTP channels
     disableStats: false,
     disableAudioLevels: false,

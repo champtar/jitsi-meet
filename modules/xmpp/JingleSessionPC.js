@@ -596,6 +596,12 @@ JingleSessionPC.prototype.setRemoteDescription = function (elem, desctype) {
             this.remoteSDP.raw = this.remoteSDP.session + this.remoteSDP.media.join('');
         }
     }
+    if (config.bandwidthLimit) {
+        this.remoteSDP.raw = this.remoteSDP.raw.replace('a=rtpmap:100 VP8/90000', 'a=rtpmap:100 VP8/90000\r\na=fmtp:100 x-google-max-bitrate='+parseInt(config.bandwidthLimit));
+    }
+    if (config.forceVP9) {
+        this.remoteSDP.raw = this.remoteSDP.raw.replace('a=rtpmap:100 VP8/90000', 'a=rtpmap:100 VP9/90000');
+    }
     var remotedesc = new RTCSessionDescription({type: desctype, sdp: this.remoteSDP.raw});
 
     this.peerconnection.setRemoteDescription(remotedesc,
