@@ -198,17 +198,17 @@ export default {
     /**
      * Show notification that authentication is required
      * to create the conference, so he should authenticate or wait for a host.
-     * @param {string} roomName name of the conference
+     * @param {JitsiConference} the conference
      * @param {function} onAuthNow callback to invoke if
      * user want to authenticate.
      * @returns dialog
      */
-    showAuthRequiredDialog: function (roomName, onAuthNow) {
+    showAuthRequiredDialog: function (room, onAuthNow) {
         var title = APP.translation.generateTranslationHTML(
             "dialog.WaitingForHost"
         );
         var msg = APP.translation.generateTranslationHTML(
-            "dialog.WaitForHostMsg", {room: roomName}
+            "dialog.WaitForHostMsg", {room: room.getName()}
         );
 
         var buttonTxt = APP.translation.generateTranslationHTML(
@@ -228,7 +228,7 @@ export default {
 
                 // Open login popup
                 if (submitValue === 'authNow') {
-                    onAuthNow();
+                    onAuthNow(room); //TODO: FIX ME, onAuthNow take 2 args
                 }
             }
         );

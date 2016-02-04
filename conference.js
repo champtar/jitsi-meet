@@ -191,7 +191,7 @@ class ConferenceConnector {
             }, 5000);
 
             // notify user that auth is required
-            AuthHandler.requireAuth(APP.conference.roomName);
+            AuthHandler.requireAuth(APP.conference._room);
             break;
 
         case ConferenceErrors.RESERVATION_ERROR:
@@ -471,6 +471,7 @@ export default {
         email && sendEmail(email);
 
         let nick = APP.settings.getDisplayName();
+        //(this._room.options.config.useNicks && !nick) && (() => {
         (config.useNicks && !nick) && (() => {
             nick = APP.UI.askForNickname();
             APP.settings.setDisplayName(nick);
